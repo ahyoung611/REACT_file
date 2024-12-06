@@ -1,27 +1,25 @@
-*{
+* {
   margin: 0;
   padding: 0;
 }
 
-body{
-  background: #fdd;
+body {
+  background: rgb(0, 5, 1);
+  color: #fff;
+  font-size: 20px;
 }
 
-img{
-  width: 100%;
-  aspect-ratio: 1/1;
-}
-
-.card{
+.App_btn {
   display: flex;
-  gap: 1rem;
-  margin-top: 50px;
+  gap: 10px;
 }
 
-.profile{
-  padding: 1rem;
-  min-width: 120px;
-  background: #fafafa;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  border-radius: 10px;
+.App-container {
+  width: 500px;
+  margin: auto;
+}
+
+.App-board{
+  display: flex;
+  justify-content: space-between;
 }

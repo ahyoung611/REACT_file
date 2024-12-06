@@ -1,39 +1,52 @@
-import React from 'react';
-import maru1 from './assets/images/maru1.png';
-import maru2 from './assets/images/maru2.png';
-import maru3 from './assets/images/maru3.png';
-import maru4 from './assets/images/maru4.png';
-import './styles/index.css'
+import React, { useState } from 'react';
+import Button from './components/Button';
+import Board from './components/Board';
 
+// useState 자동으로 
+
+//nnf
+//ceil 반올림
 function App() {
+
+
+  const [MygameHistory, setMygameHistory] = useState([]);
+
+  const [YougameHistory, setYougameHistory] = useState([]);
+
+
+  const randomNumber = () => {
+    return Math.ceil(Math.random() * 6)
+  }
+
+
+  const handleRollClick = () => {
+    const nextNum = randomNumber()
+    const youNum = randomNumber()
+
+    setMygameHistory([...MygameHistory,nextNum])
+    setYougameHistory([...YougameHistory,youNum])
+  }
+
+  const handleClearClick = () => {
+
+    setMygameHistory([])
+    setYougameHistory([])
+  }
+
+
   return (
-    <div className="card" >
-      <div className="profile">
-        <img src={maru1} alt="" />
-        <h2>마루 삐죽-3-</h2>
-        <p> 뫄 불만있나?
-        </p>
+    <div className='App-container'>
+      <div className='App_btn' >
+        <Button onClick={handleRollClick} color='blue'>던지기</Button>
+        <Button onClick={handleClearClick} color='red'>처음부터</Button>
       </div>
-      <div className="profile">
-        <img src={maru2} alt="" />
-        <h2>마루 짜잔</h2>
-        <p> 헤이 모두들 안녕 ~ ♪
-        </p>
+      <div className='App-board'>
+        <Board name='나' color='blue' gamehistory={MygameHistory}/>
+        <Board name='당신' color='red' gamehistory={YougameHistory}/>
       </div>
-      <div className="profile">
-        <img src={maru3} alt="" />
-        <h2>마루 신나</h2>
-        <p> 헤헤헤헤헤헤ㅔㅎㅎㅎ헤
-        </p>
-      </div>
-      <div className="profile">
-        <img src={maru4} alt="" />
-        <h2>마루 피곤</h2>
-        <p> 나 집에 갈래 ㅜ
-        </p>
-      </div>
-    </div>
-  );
+      
+    </div >
+  )
 }
 
 export default App;
